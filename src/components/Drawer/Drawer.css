@@ -1,0 +1,24 @@
+.drawer-root { position: fixed; inset: 0; z-index: 100; }
+.drawer-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(10, 12, 18, 0.42);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+  animation: drawer-fade var(--dur-2) var(--ease);
+}
+.drawer {
+  position: absolute; top: 0; bottom: 0; width: min(88vw, 380px);
+  display: flex; flex-direction: column;
+  border-radius: 0; border: 0;
+}
+.drawer--right { right: 0; border-left: 1px solid var(--glass-border); animation: drawer-in-right var(--dur-2) var(--ease); }
+.drawer--left { left: 0; border-right: 1px solid var(--glass-border); animation: drawer-in-left var(--dur-2) var(--ease); }
+.drawer__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.1rem; border-bottom: 1px solid var(--glass-hairline);
+}
+.drawer__title { font-size: 1.1rem; }
+.drawer__body { padding: 1.2rem 1.1rem; overflow-y: auto; }
+
+@keyframes drawer-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes drawer-in-right { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes drawer-in-left { from { transform: translateX(-100%); } to { transform: none; } }

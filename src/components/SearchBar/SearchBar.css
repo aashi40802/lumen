@@ -1,0 +1,14 @@
+.searchbar {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.35rem 0.4rem 0.35rem 0.9rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--glass-border);
+}
+.searchbar__icon { color: var(--ink-3); display: inline-flex; }
+.searchbar__input {
+  flex: 1; min-width: 0; border: none; background: transparent;
+  padding: 0.55rem 0.25rem; font-size: 1rem; color: var(--ink);
+}
+.searchbar__input:focus-visible { outline: none; box-shadow: none; }
+.searchbar__input::-webkit-search-cancel-button { display: none; }
+.searchbar__clear { width: 34px; height: 34px; }

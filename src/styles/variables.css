@@ -1,0 +1,95 @@
+/* =============================================================
+   Design tokens — an original, Apple-inspired system.
+   Light + dark themes via [data-theme]; respects prefers-color-scheme
+   through ThemeContext. Glass surfaces are used selectively.
+   ============================================================= */
+:root {
+  /* Type */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing scale (4px base) */
+  --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-5: 1.5rem; --sp-6: 2rem; --sp-7: 2.5rem; --sp-8: 3rem; --sp-10: 4rem;
+
+  /* Radii */
+  --r-xs: 8px; --r-sm: 12px; --r-md: 16px; --r-lg: 22px; --r-xl: 28px; --r-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-1: 0.15s; --dur-2: 0.26s; --dur-3: 0.4s;
+
+  /* Layout */
+  --maxw: 1200px;
+  --nav-h: 64px;
+
+  /* ---- Light theme palette ---- */
+  --bg: #eef1f6;
+  --bg-2: #e6eaf1;
+  --ink: #10131a;
+  --ink-2: #454b57;
+  --ink-3: #6b7280;
+  --line: #dde2ea;
+  --surface: #ffffff;
+  --surface-2: #f5f7fb;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-hairline: rgba(16, 19, 26, 0.08);
+  --glass-blur: 20px;
+
+  /* Brand / accent — a single restrained accent, not random per component */
+  --accent: #2f6bff;
+  --accent-strong: #1f54e0;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(47, 107, 255, 0.12);
+
+  /* Semantic */
+  --success: #1a7f52;
+  --danger: #c02637;
+  --danger-soft: rgba(192, 38, 55, 0.1);
+  --warning: #a86400;
+  --star: #e8a33d;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(16, 19, 26, 0.06);
+  --shadow-2: 0 10px 30px rgba(16, 19, 26, 0.10), 0 2px 6px rgba(16, 19, 26, 0.06);
+  --shadow-3: 0 24px 60px rgba(16, 19, 26, 0.16), 0 6px 16px rgba(16, 19, 26, 0.08);
+
+  --focus: 0 0 0 3px rgba(47, 107, 255, 0.45);
+}
+
+/* ---- Dark theme ---- */
+[data-theme="dark"] {
+  --bg: #0b0d12;
+  --bg-2: #10141c;
+  --ink: #eef2f8;
+  --ink-2: #c3cad6;
+  --ink-3: #8b93a3;
+  --line: #232a36;
+  --surface: #151a23;
+  --surface-2: #1b212c;
+
+  --glass-bg: rgba(24, 30, 41, 0.55);
+  --glass-bg-strong: rgba(26, 33, 45, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-hairline: rgba(255, 255, 255, 0.08);
+
+  --accent: #5b8cff;
+  --accent-strong: #3f74f5;
+  --accent-ink: #0b0d12;
+  --accent-soft: rgba(91, 140, 255, 0.16);
+
+  --success: #4ecb8b;
+  --danger: #ff7a86;
+  --danger-soft: rgba(255, 122, 134, 0.14);
+  --warning: #e0a54a;
+  --star: #f0b64d;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 12px 34px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-3: 0 26px 64px rgba(0, 0, 0, 0.6), 0 8px 18px rgba(0, 0, 0, 0.45);
+  --focus: 0 0 0 3px rgba(91, 140, 255, 0.5);
+}

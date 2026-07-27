@@ -1,0 +1,148 @@
+/* =============================================================
+   Global base styles + shared primitives (glass, buttons, forms).
+   ============================================================= */
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100dvh;
+}
+
+/* Atmospheric, restrained background: soft ambient shapes behind content. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(42rem 42rem at 82% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(38rem 38rem at -8% 12%, rgba(120, 140, 190, 0.10), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  transition: background var(--dur-3) var(--ease);
+}
+
+.app-shell { display: flex; flex-direction: column; min-height: 100dvh; }
+main { flex: 1; width: 100%; }
+
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+.section { padding-block: clamp(2rem, 5vw, 3.5rem); }
+
+/* Skip link */
+.skip-link {
+  position: fixed; top: -60px; left: 12px; z-index: 200;
+  background: var(--surface); color: var(--ink);
+  padding: 0.6rem 1rem; border-radius: var(--r-sm);
+  box-shadow: var(--shadow-2); transition: top var(--dur-1) var(--ease);
+}
+.skip-link:focus-visible { top: 12px; }
+
+/* ---- Glass surface ---- */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  box-shadow: var(--shadow-2);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--glass-bg-strong); }
+}
+
+/* ---- Headings / text ---- */
+.h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.h2 { font-size: clamp(1.4rem, 2.6vw, 1.85rem); }
+.eyebrow { font-size: 0.78rem; font-weight: 650; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); }
+.muted { color: var(--ink-3); }
+.text-danger { color: var(--danger); }
+
+/* ---- Focus ring for all interactive elements ---- */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: var(--r-xs);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-weight: 600; line-height: 1;
+  padding: 0.72rem 1.15rem; border-radius: var(--r-pill);
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform var(--dur-1) var(--ease), background var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn--primary { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow-1); }
+.btn--primary:hover:not(:disabled) { background: var(--accent-strong); box-shadow: var(--shadow-2); }
+.btn--ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.btn--ghost:hover:not(:disabled) { background: var(--surface-2); }
+.btn--quiet { background: transparent; color: var(--ink-2); }
+.btn--quiet:hover:not(:disabled) { background: var(--surface-2); color: var(--ink); }
+.btn--danger { background: transparent; color: var(--danger); border-color: transparent; }
+.btn--danger:hover:not(:disabled) { background: var(--danger-soft); }
+.btn--block { width: 100%; }
+.btn--lg { padding: 0.9rem 1.4rem; font-size: 1.02rem; }
+.btn--sm { padding: 0.5rem 0.85rem; font-size: 0.9rem; }
+
+/* Icon-only button */
+.icon-btn {
+  position: relative;
+  display: inline-grid; place-items: center;
+  width: 42px; height: 42px; border-radius: var(--r-pill);
+  color: var(--ink); background: transparent;
+  transition: background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), transform var(--dur-1) var(--ease);
+}
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn:active { transform: scale(0.94); }
+
+/* ---- Chips / pills ---- */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 0.85rem; border-radius: var(--r-pill);
+  border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink-2); font-size: 0.9rem; font-weight: 550;
+  transition: all var(--dur-2) var(--ease);
+}
+.chip:hover { color: var(--ink); border-color: var(--ink-3); }
+.chip[aria-pressed="true"], .chip.is-active {
+  background: var(--accent); color: var(--accent-ink); border-color: transparent;
+}
+
+/* ---- Forms ---- */
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field > label { font-size: 0.85rem; font-weight: 600; color: var(--ink-2); }
+.input, .select, .textarea {
+  width: 100%; padding: 0.72rem 0.9rem;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  transition: border-color var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+}
+.input::placeholder { color: var(--ink-3); }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { border-color: var(--accent); }
+.input[aria-invalid="true"], .select[aria-invalid="true"] { border-color: var(--danger); }
+.field-error { font-size: 0.82rem; color: var(--danger); display: flex; align-items: center; gap: 0.3rem; }
+
+/* Currency / numbers use tabular figures */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Price */
+.price { font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+/* Divider */
+.divider { height: 1px; background: var(--line); border: 0; }
+
+/* Motion utility */
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fade-up var(--dur-3) var(--ease) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

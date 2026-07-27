@@ -1,0 +1,12 @@
+.rating { display: inline-flex; align-items: center; gap: 0.35rem; line-height: 1; }
+.rating__stars { display: inline-flex; align-items: center; gap: 2px; }
+.rating__star { position: relative; display: inline-block; flex: none; }
+.rating__star-bg,
+.rating__star-fg { display: block; }
+.rating__star-bg { color: var(--line); }
+.rating__star-fg {
+  position: absolute; inset: 0; overflow: hidden; white-space: nowrap;
+  color: var(--star);
+}
+.rating__star-bg .icon, .rating__star-fg .icon { display: block; }
+.rating__count { font-size: 0.8rem; }

@@ -1,0 +1,5 @@
+.hero { padding-block: clamp(2rem, 6vw, 4rem); }
+.hero__inner { max-width: 640px; }
+.hero__title { font-size: clamp(2rem, 5vw, 3.1rem); margin: 0.5rem 0 0.9rem; letter-spacing: -0.03em; }
+.hero__lede { font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.6; }
+.hero__actions { display: flex; gap: 0.75rem; margin-top: 1.6rem; flex-wrap: wrap; }
